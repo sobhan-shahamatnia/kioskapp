@@ -1,0 +1,275 @@
+/* =============================================================================
+   RESET & CSS VARIABLES
+   ============================================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg:         #f9f9f9;
+  --color-green:      #1ea53c;
+  --color-white:      #ffffff;
+  --color-text:       #1a1a1a;
+  --color-text-muted: #555555;
+  --font-main:        'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+/* =============================================================================
+   BASE
+   ============================================================================= */
+
+html,
+body {
+  height: 100vh;    /* anchor explicitly to viewport — not parent percentage */
+  overflow: hidden; /* prevent scrollbar from adding extra size */
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-width: 760px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =============================================================================
+   PAGE LAYOUT
+   ============================================================================= */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;     /* inherits exact height from body — no scrollbar offset */
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =============================================================================
+   HEADER
+   ============================================================================= */
+
+.header {
+  flex-shrink: 0;
+  padding:
+    clamp(10px, 1.6vw, 26px)
+    clamp(16px, 3vw,   52px);
+  background-color: var(--color-bg);
+}
+
+.header__logo {
+  height: clamp(28px, 3.6vw, 54px);
+  width: auto;
+}
+
+/* =============================================================================
+   BANNER
+   ============================================================================= */
+
+.banner {
+  /* grow to fill leftover space, but never taller than 400px */
+  flex: 1;
+  min-height: clamp(140px, 25vh, 300px);
+  max-height: 400px;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 clamp(14px, 1.2vw, 36px);
+}
+
+.banner__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =============================================================================
+   CARDS SECTION
+   ============================================================================= */
+
+.cards {
+  /* fixed size — does NOT grow; banner takes leftover space */
+  flex-shrink: 0;
+  display: flex;
+  gap:     clamp(10px, 1.8vw, 28px);
+  /* horizontal padding stays; top/bottom margin absorbs extra room when banner hits its 400px cap */
+  padding: 0 clamp(14px, 1.2vw, 36px);
+  margin-top:    clamp(10px, 4.5vh, 60px);
+  margin-bottom: clamp(10px, 1.8vh, 28px);
+}
+
+/* =============================================================================
+   CARD â€” BASE
+   ============================================================================= */
+
+.card {
+  flex: 1;
+  /* scale with viewport height, hard cap at 350px */
+  max-height: clamp(200px, 36vh, 350px);
+  position: relative;
+  overflow: hidden;
+  border-radius: clamp(6px, 0.6vw, 10px);
+  padding: clamp(18px, 3vw, 50px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 16px);
+}
+
+/* =============================================================================
+   CARD â€” VARIANTS
+   ============================================================================= */
+
+.card--portfolio {
+  background-color: var(--color-white);
+}
+
+.card--datasheet {
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+/* =============================================================================
+   CARD â€” BADGE ICON
+   ============================================================================= */
+
+.card__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:  clamp(20px, 2.2vw, 36px);
+  height: clamp(20px, 2.2vw, 36px);
+  flex-shrink: 0;
+}
+
+.card--portfolio .card__badge {
+  color: var(--color-green);
+}
+
+.card__badge svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* =============================================================================
+   CARD â€” TITLE
+   ============================================================================= */
+
+.card__title {
+  font-size: clamp(16px, 2vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* =============================================================================
+   CARD â€” DESCRIPTION
+   ============================================================================= */
+
+.card__desc {
+  font-size: clamp(11px, 1vw, 16px);
+  line-height: 1.65;
+  max-width: 34em;
+  flex-grow: 1;
+}
+
+.card--portfolio .card__desc {
+  color: var(--color-text-muted);
+}
+
+.card--datasheet .card__desc {
+  color: var(--color-white);
+  opacity: 0.88;
+}
+
+/* =============================================================================
+   CARD â€” CTA LINK
+   ============================================================================= */
+
+.card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(5px, 0.5vw, 8px);
+  font-size: clamp(11px, 1vw, 15px);
+  font-weight: 600;
+  margin-top: auto;
+}
+
+.card--portfolio .card__cta {
+  color: var(--color-green);
+}
+
+.card--datasheet .card__cta {
+  color: var(--color-white);
+}
+
+.card__cta-icon {
+  width:  clamp(14px, 1.2vw, 20px);
+  height: clamp(14px, 1.2vw, 20px);
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   CARD â€” DECORATIVE BACKGROUND ICON
+   ============================================================================= */
+
+.card__decor {
+  position: absolute;
+  bottom: clamp(-8px,  -0.6vw, -14px);
+  right:  clamp(-8px,  -0.6vw, -14px);
+  width:  clamp(80px,  14vw,   210px);
+  height: clamp(80px,  14vw,   210px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.card__decor svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.card--portfolio .card__decor {
+  color: rgba(0, 0, 0, 0.06);
+}
+
+.card--datasheet .card__decor {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+/* =============================================================================
+   FOOTER
+   ============================================================================= */
+
+.footer {
+  flex-shrink: 0;
+  margin-top: auto; /* push footer to bottom of flex container when content is shorter than viewport */
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    clamp(10px, 1.4vw, 22px)
+    clamp(16px, 3vw,   48px);
+}
+
+.footer__copy {
+  font-size: clamp(10px, 0.85vw, 14px);
+  color: #777;
+  letter-spacing: 0.01em;
+}
