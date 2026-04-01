@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Inquiry – JinKo Solar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="css/form.css">
+</head>
+<body>
+
+  <div class="frm-page">
+
+    <!-- ── Header ────────────────────────────────────────────── -->
+    <header class="frm-header">
+      <img src="assets/logo.png" alt="JinKo Solar" class="frm-header__logo">
+    </header>
+
+    <!-- ── Page title ────────────────────────────────────────── -->
+    <div class="frm-intro">
+      <h1 class="frm-intro__title">Jinko Solar Project Inquiry</h1>
+      <p class="frm-intro__sub">
+        Provide your details to initiate a consultation or a Product Datasheet Request.
+      </p>
+    </div>
+
+    <!-- ── Form card ─────────────────────────────────────────── -->
+    <main class="frm-card">
+      <form class="frm-form" id="inquiryForm" novalidate>
+
+        <!-- Row: First name + Last name -->
+        <div class="frm-row">
+          <div class="frm-field">
+            <label class="frm-label" for="firstName">FIRST NAME</label>
+            <input
+              class="frm-input"
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="e.g. Julian"
+              autocomplete="given-name"
+              required
+            >
+          </div>
+          <div class="frm-field">
+            <label class="frm-label" for="lastName">LAST NAME</label>
+            <input
+              class="frm-input"
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="e.g. Thorne"
+              autocomplete="family-name"
+              required
+            >
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="frm-field">
+          <label class="frm-label" for="email">EMAIL ADDRESS</label>
+          <input
+            class="frm-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="julian.thorne@archistudio.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <!-- Company name (optional) -->
+        <div class="frm-field">
+          <div class="frm-label-row">
+            <label class="frm-label" for="company">COMPANY NAME</label>
+            <span class="frm-label-opt">Optional</span>
+          </div>
+          <input
+            class="frm-input"
+            type="text"
+            id="company"
+            name="company"
+            placeholder="Studio Global"
+            autocomplete="organization"
+          >
+        </div>
+
+        <!-- Newsletter consent -->
+        <label class="frm-check">
+          <input type="checkbox" class="frm-check__input" name="newsletter">
+          <span class="frm-check__box" aria-hidden="true">
+            <!-- Heroicons: check -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <span class="frm-check__label">
+            Sign me up for the Jinko Solar newsletter to receive the latest solar energy insights
+            and project updates.
+          </span>
+        </label>
+
+        <!-- Privacy policy consent -->
+        <label class="frm-check">
+          <input type="checkbox" class="frm-check__input" name="privacy" required>
+          <span class="frm-check__box" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+          <span class="frm-check__label">
+            I acknowledge that my data will be handled in accordance with the
+            <a href="#" class="frm-check__link">Data Privacy Policy</a>
+            for solar project evaluation and datasheet delivery.
+          </span>
+        </label>
+
+      </form>
+    </main>
+
+    <!-- ── Bottom Action Bar ──────────────────────────────────── -->
+    <nav class="frm-actions" aria-label="Page navigation">
+
+      <div class="frm-actions__left">
+        <a href="datasheets.html" class="frm-actions__btn frm-actions__btn--ghost">
+          <!-- Heroicons: arrow-left -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M17 10a.75.75 0 0 1-.75.75H5.612l4.158 3.96a.75.75 0 1 1-1.04 1.08l-5.5-5.25a.75.75 0 0 1 0-1.08l5.5-5.25a.75.75 0 1 1 1.04 1.08L5.612 9.25H16.25A.75.75 0 0 1 17 10Z" clip-rule="evenodd"/>
+          </svg>
+          Back
+        </a>
+
+        <a href="index.html" class="frm-actions__btn frm-actions__btn--ghost">
+          <!-- Heroicons: home -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M9.293 2.293a1 1 0 0 1 1.414 0l7 7A1 1 0 0 1 17 11h-1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6H3a1 1 0 0 1-.707-1.707l7-7Z" clip-rule="evenodd"/>
+          </svg>
+          Home
+        </a>
+      </div>
+
+      <button
+        type="submit"
+        form="inquiryForm"
+        class="frm-actions__btn frm-actions__btn--primary"
+      >
+        ORDER/CONFIRM INQUIRY
+      </button>
+
+    </nav>
+
+    <!-- ── Footer ────────────────────────────────────────────── -->
+    <footer class="frm-footer">
+      <small>All rights reserved &copy; 2020 Jinko Solar</small>
+    </footer>
+
+  </div>
+
+</body>
+</html>
