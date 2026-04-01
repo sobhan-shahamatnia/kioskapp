@@ -1,0 +1,98 @@
+/* =============================================================================
+   LOADING SCREEN — loading.css
+   Full-viewport, no-scroll, centred layout.
+   ============================================================================= */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --color-green: #1ea53c;
+  --color-white: #ffffff;
+  --font-main:   'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-white);
+  min-width: 760px;
+}
+
+/* ── Loading screen ────────────────────────────────────────── */
+.ld-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(20px, 3vh, 40px);
+  background-color: var(--color-white);
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* fade-out class added by JS */
+.ld-screen--fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Logo ──────────────────────────────────────────────────── */
+.ld-logo {
+  display: block;
+  height: clamp(36px, 5vw, 72px);
+  width: auto;
+  object-fit: contain;
+}
+
+/* ── Dots container ────────────────────────────────────────── */
+.ld-dots {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 14px);
+}
+
+/* ── Single dot ────────────────────────────────────────────── */
+.ld-dot {
+  display: block;
+  width:  clamp(8px, 0.9vw, 13px);
+  height: clamp(8px, 0.9vw, 13px);
+  border-radius: 50%;
+  background-color: var(--color-green);
+  opacity: 0.3;
+  animation: ld-bounce 1s infinite ease-in-out;
+}
+
+.ld-dot--2 {
+  animation-delay: 0.2s;
+}
+
+.ld-dot--3 {
+  animation-delay: 0.4s;
+}
+
+/* ── Bounce keyframes ──────────────────────────────────────── */
+@keyframes ld-bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(clamp(-6px, -1vh, -10px));
+    opacity: 1;
+  }
+}
