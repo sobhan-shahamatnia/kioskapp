@@ -1,0 +1,267 @@
+/* =============================================================================
+   PORTFOLIO PAGE — portfolio.css
+   Scrollable layout. Min-width: 760px.
+   ============================================================================= */
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --color-bg:         #f9f9f9;
+  --color-green:      #1ea53c;
+  --color-white:      #ffffff;
+  --color-text:       #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-border:     #e4e4e4;
+  --font-main:        'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+  --gutter:           clamp(16px, 3vw, 52px);
+  --page-max:         1200px;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-width: 760px;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+.pf-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;    /* scrollable — no overflow:hidden */
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.pf-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding:
+    clamp(10px, 1.4vw, 24px)
+    var(--gutter);
+  background-color: var(--color-bg);
+}
+
+.pf-header__logo {
+  height: clamp(28px, 3.4vw, 50px);
+  width: auto;
+}
+
+/* ── Main (scrollable content) ─────────────────────────────── */
+.pf-main {
+  flex: 1;
+  padding:
+    clamp(14px, 2vw, 36px)
+    var(--gutter)
+    clamp(14px, 2vw, 36px);
+}
+
+/* ── Hero headline ─────────────────────────────────────────── */
+.pf-hero {
+  margin-bottom: clamp(16px, 2.4vw, 36px);
+}
+
+.pf-hero__title {
+  font-size: clamp(28px, 4.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(10px, 1.2vw, 18px);
+}
+
+.pf-hero__title--black {
+  color: var(--color-text);
+}
+
+.pf-hero__title--green {
+  color: var(--color-green);
+}
+
+.pf-hero__desc {
+  font-size: clamp(12px, 1.1vw, 16px);
+  color: var(--color-text-muted);
+  max-width: 40em;
+  line-height: 1.65;
+}
+
+/* ── Divider ───────────────────────────────────────────────── */
+.pf-divider {
+  border: none;
+  border-top: 1.5px solid var(--color-green);
+  width: clamp(120px, 20vw, 260px);
+  margin-left: 0;
+  margin-bottom: clamp(16px, 2.4vw, 36px);
+}
+
+/* ── Product Grid ──────────────────────────────────────────── */
+.pf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.6vw, 24px);
+}
+
+/* ── Product Card ──────────────────────────────────────────── */
+.pf-card {
+  background-color: var(--color-white);
+  border-radius: clamp(6px, 0.6vw, 10px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Card image ────────────────────────────────────────────── */
+.pf-card__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.pf-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.3s ease;
+}
+
+.pf-card:hover .pf-card__img {
+  transform: scale(1.04);
+}
+
+/* NEW badge */
+.pf-card__badge {
+  position: absolute;
+  top: clamp(8px, 0.9vw, 14px);
+  left: clamp(8px, 0.9vw, 14px);
+  background-color: var(--color-green);
+  color: var(--color-white);
+  font-size: clamp(8px, 0.7vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px clamp(6px, 0.6vw, 9px);
+  border-radius: 3px;
+}
+
+/* ── Card body ─────────────────────────────────────────────── */
+.pf-card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(12px, 1.4vw, 20px);
+  gap: clamp(6px, 0.7vw, 10px);
+}
+
+.pf-card__title {
+  font-size: clamp(13px, 1.2vw, 18px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.pf-card__desc {
+  font-size: clamp(10px, 0.9vw, 13px);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ── Details button ────────────────────────────────────────── */
+.pf-card__btn {
+  font-family: var(--font-main);
+  font-size: clamp(11px, 0.95vw, 14px);
+  font-weight: 600;
+  color: var(--color-green);
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  border-radius: clamp(4px, 0.4vw, 6px);
+  padding: clamp(7px, 0.8vw, 12px) clamp(12px, 1.4vw, 20px);
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.pf-card__btn:hover {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+  color: var(--color-white);
+}
+
+/* ── Bottom Action Bar ─────────────────────────────────────── */
+.pf-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding:
+    clamp(12px, 1.4vw, 22px)
+    var(--gutter);
+  background-color: var(--color-bg);
+}
+
+.pf-actions__back {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(5px, 0.5vw, 8px);
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  transition: color 0.15s ease;
+}
+
+.pf-actions__back:hover {
+  color: var(--color-green);
+}
+
+.pf-actions__back svg {
+  width:  clamp(14px, 1.2vw, 20px);
+  height: clamp(14px, 1.2vw, 20px);
+  flex-shrink: 0;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.pf-footer {
+  flex-shrink: 0;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    clamp(10px, 1.4vw, 20px)
+    var(--gutter);
+}
+
+.pf-footer small {
+  font-size: clamp(9px, 0.82vw, 12px);
+  color: #999;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
