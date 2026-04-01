@@ -1,0 +1,323 @@
+/* =============================================================================
+   DATASHEETS PAGE — styles.css
+   Shares CSS variables with the main app (Inter font loaded in HTML).
+   This file is self-contained; it does NOT import styles.css.
+   ============================================================================= */
+
+/* ── Variables (same palette as home) ─────────────────────── */
+:root {
+  --color-bg:         #f9f9f9;
+  --color-green:      #1ea53c;
+  --color-white:      #ffffff;
+  --color-text:       #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-border:     #e0e0e0;
+  --font-main:        'Inter', 'Segoe UI', Arial, Helvetica, sans-serif;
+
+  --page-max:         1200px;
+  --gutter:           clamp(16px, 3vw, 52px);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-width: 760px;
+  line-height: 1.5;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ── Page wrapper ──────────────────────────────────────────── */
+.ds-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;   /* scrollable — different from home */
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+
+/* ── Header ────────────────────────────────────────────────── */
+.ds-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding:
+    clamp(10px, 1.6vw, 24px)
+    var(--gutter);
+  background-color: var(--color-bg);
+}
+
+.ds-header__logo {
+  height: clamp(28px, 3.4vw, 50px);
+  width: auto;
+}
+
+/* ── Main scrollable area ──────────────────────────────────── */
+.ds-main {
+  flex: 1;
+  padding:
+    clamp(14px, 2vw, 36px)
+    var(--gutter)
+    clamp(14px, 2vw, 36px);
+}
+
+/* ── Hero / headline ───────────────────────────────────────── */
+.ds-hero {
+  margin-bottom: clamp(16px, 2.4vw, 36px);
+}
+
+.ds-hero__title {
+  font-size: clamp(28px, 4.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(10px, 1.2vw, 20px);
+}
+
+.ds-hero__title--black {
+  color: var(--color-text);
+}
+
+.ds-hero__title--green {
+  color: var(--color-green);
+}
+
+.ds-hero__desc {
+  font-size: clamp(12px, 1.1vw, 16px);
+  color: var(--color-text-muted);
+  max-width: 42em;
+  line-height: 1.6;
+}
+
+/* ── Divider ───────────────────────────────────────────────── */
+.ds-divider {
+  border: none;
+  border-top: 1.5px solid var(--color-border);
+  margin-bottom: clamp(16px, 2.4vw, 36px);
+}
+
+/* ── Product Grid ──────────────────────────────────────────── */
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.6vw, 24px);
+}
+
+/* ── Product Card ──────────────────────────────────────────── */
+.ds-card {
+  position: relative;
+  background-color: var(--color-white);
+  border-radius: clamp(6px, 0.6vw, 10px);
+  padding: clamp(12px, 1.6vw, 22px);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 0.9vw, 14px);
+  /* subtle border, shown on hover/checked */
+  border: 1.5px solid transparent;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ds-card:hover {
+  border-color: var(--color-green);
+  box-shadow: 0 2px 12px rgba(30, 165, 60, 0.12);
+}
+
+/* hide the real checkbox */
+.ds-card__check {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* custom checkbox box — top right */
+.ds-card__check-box {
+  position: absolute;
+  top: clamp(8px, 1vw, 14px);
+  right: clamp(8px, 1vw, 14px);
+  width:  clamp(16px, 1.6vw, 22px);
+  height: clamp(16px, 1.6vw, 22px);
+  border: 1.5px solid var(--color-border);
+  border-radius: 3px;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.ds-card__check-box svg {
+  width: 70%;
+  height: 70%;
+  display: none;
+  color: var(--color-white);
+}
+
+/* checked state */
+.ds-card__check:checked ~ .ds-card__check-box {
+  background-color: var(--color-green);
+  border-color: var(--color-green);
+}
+
+.ds-card__check:checked ~ .ds-card__check-box svg {
+  display: block;
+}
+
+.ds-card__check:checked ~ .ds-card__img-wrap {
+  /* slight highlight on image area when checked */
+  opacity: 1;
+}
+
+/* card selected border */
+.ds-card:has(.ds-card__check:checked) {
+  border-color: var(--color-green);
+}
+
+/* ── Card image area ───────────────────────────────────────── */
+.ds-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: clamp(4px, 0.4vw, 6px);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ds-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* ── Card name ─────────────────────────────────────────────── */
+.ds-card__name {
+  font-size: clamp(10px, 0.95vw, 14px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ── Bottom Action Bar ─────────────────────────────────────── */
+.ds-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding:
+    clamp(10px, 1.4vw, 20px)
+    var(--gutter);
+  background-color: var(--color-bg);
+  border-top: 1.5px solid var(--color-border);
+}
+
+.ds-actions__back {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(5px, 0.5vw, 8px);
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color 0.15s ease;
+}
+
+.ds-actions__back:hover {
+  color: var(--color-green);
+}
+
+.ds-actions__back svg {
+  width:  clamp(14px, 1.2vw, 20px);
+  height: clamp(14px, 1.2vw, 20px);
+  flex-shrink: 0;
+}
+
+.ds-actions__right {
+  display: flex;
+  gap: clamp(8px, 1vw, 16px);
+  align-items: center;
+}
+
+/* shared button base */
+.ds-actions__save,
+.ds-actions__next {
+  font-family: var(--font-main);
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 600;
+  border-radius: clamp(4px, 0.4vw, 8px);
+  padding:
+    clamp(8px, 0.9vw, 13px)
+    clamp(18px, 2.2vw, 36px);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+/* Save Draft — outline */
+.ds-actions__save {
+  background-color: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.ds-actions__save:hover {
+  border-color: var(--color-green);
+  color: var(--color-green);
+}
+
+/* Next — filled green */
+.ds-actions__next {
+  background-color: var(--color-green);
+  border: 1.5px solid var(--color-green);
+  color: var(--color-white);
+}
+
+.ds-actions__next:hover {
+  background-color: #178f33;
+  border-color: #178f33;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+.ds-footer {
+  flex-shrink: 0;
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    clamp(10px, 1.4vw, 20px)
+    var(--gutter);
+}
+
+.ds-footer small {
+  font-size: clamp(10px, 0.85vw, 13px);
+  color: #999;
+  letter-spacing: 0.01em;
+}
